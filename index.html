@@ -44,9 +44,74 @@
 				<h1>Simple QR code generator</h1>
 			</div>
 			<div>
-				<h2>1. Enter your text / link:</h2>
+				<h2>1. Enter your content:</h2>
+
+				<div>
+					<p>
+						<select id="typeOfCode">
+							<option value="text">Text</option>
+							<option value="link" selected>Link</option>
+							<option value="email">Email</option>
+							<option value="geo">Location</option>
+							<option value="wifi">WiFi</option>
+							<option value="sms">SMS</option>
+							<option value="phone">Phone</option>
+							<option value="event">Event</option>
+							<option value="contact">Contact</option>
+						</select>
+					</p>
+					<div id="textInputs" style="display: none;">
+						<textarea id="textQrInput" placeholder="Insert your QR content here" rows="5" cols="40"></textarea>
+					</div>
+					<div id="linkInputs" style="display: none;">
+						<select id="linkQrProtocol">
+							<option value="https" selected>https://</option>
+							<option value="http">http://</option>
+							<option value="custom">custom</option>
+						</select>
+						<input type="text" id="linkQrUrl" placeholder="enter the URL here" />
+						<!-- add some help text in case "custom" is used as URL (e.g. whatsapp:// and so on) -->
+					</div>
+
+					<div id="emailInputs" style="display: none;">
+						<input type="email" id="emailQrAddress" placeholder="enter the email address here" />
+						<input type="text" id="emailQrSubject" placeholder="enter the email subject here" />
+						<input type="text" id="emailQrBody" placeholder="enter the email body here" />
+					</div>
+
+					<div id="geoInputs" style="display: none;">
+						<input type="number" id="geoQrLat" placeholder="latitude" min="-90" max="90" />
+						<input type="number" id="geoQrLon" placeholder="longitude" min="-180" max="180" />
+					</div>
+					<div id="wifiInputs" style="display: none;">
+						<select id="wifiQrEnrcyption">
+							<option value="none">none</option>
+							<option value="wep">WEP</option>
+							<option value="wpa" selected>WPA/WPA2</option>
+						</select>
+						<input type="text" id="wifiQrSsid" placeholder="enter the SSID here" />
+						<input type="text" id="qifiQrPass" placeholder="enter the Password here" />
+					</div>
+					<div id="smsInputs" style="display: none;">
+						<input type="tel" id="smsQrNumber" placeholder="enter the phone number here" />
+						<input type="text" id="smsQrMessage" placeholder="enter the Message here" />
+					</div>
+					<div id="phoneInputs" style="display: none;">
+						<input type="tel" id="phoneQrNumber" placeholder="enter the phone number here" />
+					</div>
+					<div id="eventInputs" style="display: none;">
+						event
+					</div>
+					<div id="contactInputs" style="display: none;">
+						contact
+					</div>
+
+				</div>
+
+				<hr/>
 				<textarea id="input" placeholder="Insert your QR content here" rows="5" cols="40"></textarea><br />
 				<span class="italic">Make sure that you include the <strong>https://</strong> if you want to create a QR code with a link.</span>
+				<hr/>
 			</div>
 			<div>
 				<h2>2. Select the level of error correction and pixel size:</h2>
@@ -903,6 +968,20 @@ class QrEncoder {
 
 /* end of QrEncoder Javascript library for QrCode generation code */
 
+
+const qrTypes = [
+	{id: "text"},
+	{id: "link"},
+	{id: "email"},
+	{id: "geo"},
+	{id: "wifi"},
+	{id: "sms"},
+	{id: "phone"},
+	{id: "event"},
+	{id: "contact"},
+];
+
+
 const performEncode = () => {
 	saveButton.disabled = true;
 	const canvas = document.getElementById("output");
@@ -969,10 +1048,33 @@ const downloadCanvasAsImage = () => {
 		downloadLink.click();
 	});
 }
+
+const updateSelectedQrType = (event) => {
+	activateInputDiv(event.target.value);
+}
+
+const activateInputDiv = (selectedType) => {
+	qrTypes.forEach(element => {
+		const elementInputDiv = document.getElementById(element.id + 'Inputs');
+		if (element.id === selectedType) {
+			elementInputDiv.style.display = "block";
+		} else {
+			elementInputDiv.style.display = "none";
+		}
+	});
+}
+
 const genrateButton = document.getElementById('runEncoder');
 genrateButton.addEventListener('click', performEncode);
+
 const saveButton = document.getElementById('imageSaver');
 saveButton.addEventListener('click', downloadCanvasAsImage);
+
+const typeSelction = document.getElementById('typeOfCode');
+typeSelction.addEventListener('change', updateSelectedQrType);
+
+activateInputDiv(typeSelction.value);
+
 
 		</script>
 	</body>
