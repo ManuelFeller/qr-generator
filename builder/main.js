@@ -1,9 +1,10 @@
 import './style.css';
 import QrEncoder from "qr-encoder";
-
+import generateContactFromInputs from './generators/contact';
+import generateTextFromInputs from './generators/text'
 
 const qrTypes = [
-	{id: "text"},
+	{id: "text", contentGenerator: generateTextFromInputs },
 	{id: "link"},
 	{id: "email"},
 	{id: "geo"},
@@ -11,8 +12,10 @@ const qrTypes = [
 	{id: "sms"},
 	{id: "phone"},
 	{id: "event"},
-	{id: "contact"},
+	{id: "contact", contentGenerator: generateContactFromInputs},
 ];
+// will be set on init
+let selectedQrMode = undefined;
 
 
 const performEncode = () => {
@@ -20,16 +23,28 @@ const performEncode = () => {
 	const canvas = document.getElementById("output");
 	const canvasContext = canvas.getContext("2d");
 	canvasContext.clearRect(0, 0, canvasContext.canvas.width, canvasContext.canvas.height);
-	const inputArea = document.getElementById("input");
-	if (inputArea.value.trim() === '') {
-		alert("No content was provided for the QR code.\nGeneration not possible...");
+	// const inputArea = document.getElementById("input");
+	// if (inputArea.value.trim() === '') {
+	// 	alert("No content was provided for the QR code.\nGeneration not possible...");
+	// 	return;
+	// }
+
+	let qrContent = null;
+	if (selectedQrMode.contentGenerator === undefined) {
+		alert('No generator defined for QR Code Type!');
 		return;
+	} else {
+		qrContent = selectedQrMode.contentGenerator();
+		if (qrContent === null) {
+			return;
+		}
 	}
+
 	const errorCorrectionSelect = document.getElementById("errorCorrection");
 	const pixelSizeSelect = document.getElementById("pixelSize");
 	const foregroundColorSelect = document.getElementById("foregroundColor");
 	const backgroundColorSelect = document.getElementById("backgroundColor");
-	const bitMatrix = QrEncoder.encode(inputArea.value.trim(), errorCorrectionSelect.value);
+	const bitMatrix = QrEncoder.encode(qrContent, errorCorrectionSelect.value);
 	const pixelSize = parseInt(pixelSizeSelect.value, 10);
 	const transparentBackground = false;
 	canvasContext.canvas.width = (bitMatrix.length * pixelSize) + (2 * pixelSize);
@@ -85,51 +100,14 @@ const updateSelectedQrType = (event) => {
 	activateInputDiv(event.target.value);
 }
 
-const generateContactFromInputs = () => {
 
-	// N:Stevenson;John;Philip,Paul;Dr.;Jr.,M.D.,A.C.P.
-	// LastName;Firstname;MiddleName;Prefixes;Suffixes
-	// Family Names (also known as surnames), Given Names, Additional Names, Honorific Prefixes, and Honorific Suffixes
-
-	const inputTitle = document.getElementById('contactInputTitle');
-	const inputFirstName = document.getElementById('contactInputFirstName');
-	const inputMiddleName = document.getElementById('contactInputMiddleName');
-	const inputLastName = document.getElementById('contactInputLastName');
-	const inputNameSuffix = document.getElementById('contactInputNameSuffix');
-	// TITLE
-	const inputJobTitle = document.getElementById('contactInputJobTitle');
-	// ORG
-	const inputCompany = document.getElementById('contactInputCompany');
-
-	// type work or home
-	const inputContactType = document.getElementById('contactInputContactType');
-
-	const inputStreetAndNumber = document.getElementById('contactInputStreetAndNumber');
-	const inputZipCode = document.getElementById('contactInputZipCode');
-	const inputCity = document.getElementById('contactInputCity');
-	const inputCountry = document.getElementById('contactInputCountry');
-
-	// ADR;TYPE=home:;;123 Main St.;Springfield;IL;12345;USA
-
-	// TEL;TYPE=cell:(123) 555-5832
-	// TYPE="text,voice"
-	const inputMobile = document.getElementById('contactInputMobile');
-	const inputLandline = document.getElementById('contactInputLandline');
-	// EMAIL
-	const inputEmail = document.getElementById('contactInputEmail');
-	// URL
-	const inputUrl = document.getElementById('contactInputUrl');
-
-
-
-
-}
 
 const activateInputDiv = (selectedType) => {
-	qrTypes.forEach(element => {
-		const elementInputDiv = document.getElementById(element.id + 'Inputs');
-		if (element.id === selectedType) {
+	qrTypes.forEach(qrType => {
+		const elementInputDiv = document.getElementById(qrType.id + 'Inputs');
+		if (qrType.id === selectedType) {
 			elementInputDiv.style.display = "block";
+			selectedQrMode = qrType;
 		} else {
 			elementInputDiv.style.display = "none";
 		}
