@@ -62,67 +62,10 @@
 
 			</div>
 			<div>
-        <h2>2. Select the level of error correction and pixel size:</h2>
-        <details>
-          <summary>Click here to show / hide the QR code settings</summary>
-          <div>
-            <p class="italic">This is an optional step, the defaults should work for most use cases.</p>
-            <div class="twoColumnGrid">
-              <div>Error correction:</div>
-              <div>Pixel size:</div>
-              <div>
-                <select id="errorCorrection">
-                  <option value="1">Level L (7%)</option>
-                  <option value="2" selected>Level M (15%)</option>
-                  <option value="3">Level Q (25%)</option>
-                  <option value="4">Level H (30%)</option>
-                </select>
-              </div>
-              <div>
-                <select id="pixelSize">
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5" selected>5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                  <option value="11">11</option>
-                  <option value="12">12</option>
-                  <option value="13">13</option>
-                  <option value="14">14</option>
-                  <option value="15">15</option>
-                  <option value="20">20</option>
-                  <option value="25">25</option>
-                  <option value="30">30</option>
-                  <option value="35">35</option>
-                  <option value="40">40</option>
-                  <option value="45">45</option>
-                  <option value="50">50</option>
-                </select>
-              </div>
-              <div class="italic">This defines how much of the code can be damaged / invisible before it stops working.</div>
-              <div class="italic">This defines how big each square of the code should be. Go bigger for print, smaller for screens.</div>
-            </div>
-          </div>
-        </details>
+        {{> qr.quality.settings }}
 			</div>
 			<div>
-				<h2>3. Choose the colors:</h2>
-        <details>
-          <summary>Click here to show / hide the color settings</summary>
-          <div>
-            <p class="italic">Make sure there is enough contrast, else scanners may not be able to read or detect the code!</p>
-            <div class="twoColumnGrid">
-              <div>Foreground / Code:</div>
-              <div>Background:</div>
-              <div><input type="color" id="foregroundColor" value="#000000" /></div>
-              <div><input type="color" id="backgroundColor" value="#ffffff" /></div>
-            </div>
-          </div>
-        </details>
+				{{> qr.color.settings }}
 			</div>
 			<div>
 				<h2>4. Generate your QR code:</h2>
