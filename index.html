@@ -103,15 +103,53 @@
 						event
 					</div>
 					<div id="contactInputs" style="display: none;">
-						contact
+						<div class="twoColumnGrid">
+							<div>Title:</div>
+							<div><input id="contactInputTitle" type="text" placeholder="" style="width: 100%;" /></div>
+							<div>First name:</div>
+							<div><input id="contactInputFirstName" type="text" placeholder="" style="width: 100%;" /></div>
+							<div>Middle name(s):</div>
+							<div><input id="contactInputMiddleName" type="text" placeholder="" style="width: 100%;" /></div>
+							<div>Last name:</div>
+							<div><input id="contactInputLastName" type="text" placeholder="" style="width: 100%;" /></div>
+							<div>Name Suffix(es):</div>
+							<div><input id="contactInputNameSuffix" type="text" placeholder="" style="width: 100%;" /></div>
+							<div>Job Title:</div>
+							<div><input id="contactInputJobTitle" type="text" placeholder="" style="width: 100%;" /></div>
+							<div>Company Name:</div>
+							<div><input id="contactInputCompany" type="text" placeholder="" style="width: 100%;" /></div>
+							<div>Contact Type:</div>
+							<div>
+								<select id="contactInputContactType">
+									<option value="home">personal</option>
+									<option value="work" selected>company</option>
+								</select>
+							</div>
+							<div>Street and Number:</div>
+							<div><input id="contactInputStreetAndNumber" type="text" placeholder="" style="width: 100%;" /></div>
+							<div>Zip Code:</div>
+							<div><input id="contactInputZipCode" type="text" placeholder="" style="width: 100%;" /></div>
+							<div>City:</div>
+							<div><input id="contactInputCity" type="text" placeholder="" style="width: 100%;" /></div>
+							<div>Country:</div>
+							<div><input id="contactInputCountry" type="text" placeholder="" style="width: 100%;" /></div>
+							<div>Mobile Phone:</div>
+							<div><input id="contactInputMobile" type="tel" placeholder="" style="width: 100%;" /></div>
+							<div>Landline Phone:</div>
+							<div><input id="contactInputLandline" type="tel" placeholder="" style="width: 100%;" /></div>
+							<div>Email:</div>
+							<div><input id="contactInputEmail" type="email" placeholder="" style="width: 100%;" /></div>
+							<div>URL:</div>
+							<div><input id="contactInputUrl" type="url" placeholder="" style="width: 100%;" /></div>
+						</div>
 					</div>
-
 				</div>
 
 				<hr/>
 				<textarea id="input" placeholder="Insert your QR content here" rows="5" cols="40"></textarea><br />
 				<span class="italic">Make sure that you include the <strong>https://</strong> if you want to create a QR code with a link.</span>
 				<hr/>
+
 			</div>
 			<div>
 				<h2>2. Select the level of error correction and pixel size:</h2>
@@ -1053,6 +1091,46 @@ const updateSelectedQrType = (event) => {
 	activateInputDiv(event.target.value);
 }
 
+const generateContactFromInputs = () => {
+
+	// N:Stevenson;John;Philip,Paul;Dr.;Jr.,M.D.,A.C.P.
+	// LastName;Firstname;MiddleName;Prefixes;Suffixes
+	// Family Names (also known as surnames), Given Names, Additional Names, Honorific Prefixes, and Honorific Suffixes
+	
+	const inputTitle = document.getElementById('contactInputTitle');
+	const inputFirstName = document.getElementById('contactInputFirstName');
+	const inputMiddleName = document.getElementById('contactInputMiddleName');
+	const inputLastName = document.getElementById('contactInputLastName');
+	const inputNameSuffix = document.getElementById('contactInputNameSuffix');
+	// TITLE
+	const inputJobTitle = document.getElementById('contactInputJobTitle');
+	// ORG
+	const inputCompany = document.getElementById('contactInputCompany');
+
+	// type work or home
+	const inputContactType = document.getElementById('contactInputContactType');
+
+	const inputStreetAndNumber = document.getElementById('contactInputStreetAndNumber');
+	const inputZipCode = document.getElementById('contactInputZipCode');
+	const inputCity = document.getElementById('contactInputCity');
+	const inputCountry = document.getElementById('contactInputCountry');
+	
+	// ADR;TYPE=home:;;123 Main St.;Springfield;IL;12345;USA
+
+	// TEL;TYPE=cell:(123) 555-5832
+	// TYPE="text,voice"
+	const inputMobile = document.getElementById('contactInputMobile');
+	const inputLandline = document.getElementById('contactInputLandline');
+	// EMAIL
+	const inputEmail = document.getElementById('contactInputEmail');
+	// URL
+	const inputUrl = document.getElementById('contactInputUrl');
+
+	
+
+
+}
+
 const activateInputDiv = (selectedType) => {
 	qrTypes.forEach(element => {
 		const elementInputDiv = document.getElementById(element.id + 'Inputs');
@@ -1064,8 +1142,8 @@ const activateInputDiv = (selectedType) => {
 	});
 }
 
-const genrateButton = document.getElementById('runEncoder');
-genrateButton.addEventListener('click', performEncode);
+const generateButton = document.getElementById('runEncoder');
+generateButton.addEventListener('click', performEncode);
 
 const saveButton = document.getElementById('imageSaver');
 saveButton.addEventListener('click', downloadCanvasAsImage);
