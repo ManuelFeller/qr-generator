@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Simple QR code generator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+		<div class="mainContainer">
+			<div>
+				<h1>Simple QR code generator</h1>
+			</div>
+			<div>
+				<h2>1. Enter your content:</h2>
+
+				<div>
+					<p>
+						<select id="typeOfCode">
+							<option value="text">Text</option>
+							<option value="link" selected>Link</option>
+							<option value="email">Email</option>
+							<option value="geo">Location</option>
+							<option value="wifi">WiFi</option>
+							<option value="sms">SMS</option>
+							<option value="phone">Phone</option>
+							<option value="event">Event</option>
+							<option value="contact">Contact</option>
+						</select>
+					</p>
+					<div id="textInputs" style="display: none;">
+						<textarea id="textQrInput" placeholder="Insert your QR content here" rows="5" cols="40"></textarea>
+					</div>
+					<div id="linkInputs" style="display: none;">
+						<select id="linkQrProtocol">
+							<option value="https" selected>https://</option>
+							<option value="http">http://</option>
+							<option value="custom">custom</option>
+						</select>
+						<input type="text" id="linkQrUrl" placeholder="enter the URL here" />
+						<!-- add some help text in case "custom" is used as URL (e.g. whatsapp:// and so on) -->
+					</div>
+
+					<div id="emailInputs" style="display: none;">
+						<input type="email" id="emailQrAddress" placeholder="enter the email address here" />
+						<input type="text" id="emailQrSubject" placeholder="enter the email subject here" />
+						<input type="text" id="emailQrBody" placeholder="enter the email body here" />
+					</div>
+
+					<div id="geoInputs" style="display: none;">
+						<input type="number" id="geoQrLat" placeholder="latitude" min="-90" max="90" />
+						<input type="number" id="geoQrLon" placeholder="longitude" min="-180" max="180" />
+					</div>
+					<div id="wifiInputs" style="display: none;">
+						<select id="wifiQrEnrcyption">
+							<option value="none">none</option>
+							<option value="wep">WEP</option>
+							<option value="wpa" selected>WPA/WPA2</option>
+						</select>
+						<input type="text" id="wifiQrSsid" placeholder="enter the SSID here" />
+						<input type="text" id="qifiQrPass" placeholder="enter the Password here" />
+					</div>
+					<div id="smsInputs" style="display: none;">
+						<input type="tel" id="smsQrNumber" placeholder="enter the phone number here" />
+						<input type="text" id="smsQrMessage" placeholder="enter the Message here" />
+					</div>
+					<div id="phoneInputs" style="display: none;">
+						<input type="tel" id="phoneQrNumber" placeholder="enter the phone number here" />
+					</div>
+					<div id="eventInputs" style="display: none;">
+						event
+					</div>
+					<div id="contactInputs" style="display: none;">
+						<div class="twoColumnGrid">
+							<div>Title:</div>
+							<div><input id="contactInputTitle" type="text" placeholder="" style="width: 100%;" /></div>
+							<div>First name:</div>
+							<div><input id="contactInputFirstName" type="text" placeholder="" style="width: 100%;" /></div>
+							<div>Middle name(s):</div>
+							<div><input id="contactInputMiddleName" type="text" placeholder="" style="width: 100%;" /></div>
+							<div>Last name:</div>
+							<div><input id="contactInputLastName" type="text" placeholder="" style="width: 100%;" /></div>
+							<div>Name Suffix(es):</div>
+							<div><input id="contactInputNameSuffix" type="text" placeholder="" style="width: 100%;" /></div>
+							<div>Job Title:</div>
+							<div><input id="contactInputJobTitle" type="text" placeholder="" style="width: 100%;" /></div>
+							<div>Company Name:</div>
+							<div><input id="contactInputCompany" type="text" placeholder="" style="width: 100%;" /></div>
+							<div>Contact Type:</div>
+							<div>
+								<select id="contactInputContactType">
+									<option value="home">personal</option>
+									<option value="work" selected>company</option>
+								</select>
+							</div>
+							<div>Street and Number:</div>
+							<div><input id="contactInputStreetAndNumber" type="text" placeholder="" style="width: 100%;" /></div>
+							<div>Zip Code:</div>
+							<div><input id="contactInputZipCode" type="text" placeholder="" style="width: 100%;" /></div>
+							<div>City:</div>
+							<div><input id="contactInputCity" type="text" placeholder="" style="width: 100%;" /></div>
+							<div>Country:</div>
+							<div><input id="contactInputCountry" type="text" placeholder="" style="width: 100%;" /></div>
+							<div>Mobile Phone:</div>
+							<div><input id="contactInputMobile" type="tel" placeholder="" style="width: 100%;" /></div>
+							<div>Landline Phone:</div>
+							<div><input id="contactInputLandline" type="tel" placeholder="" style="width: 100%;" /></div>
+							<div>Email:</div>
+							<div><input id="contactInputEmail" type="email" placeholder="" style="width: 100%;" /></div>
+							<div>URL:</div>
+							<div><input id="contactInputUrl" type="url" placeholder="" style="width: 100%;" /></div>
+						</div>
+					</div>
+				</div>
+
+				<hr/>
+				<textarea id="input" placeholder="Insert your QR content here" rows="5" cols="40"></textarea><br />
+				<span class="italic">Make sure that you include the <strong>https://</strong> if you want to create a QR code with a link.</span>
+				<hr/>
+
+			</div>
+			<div>
+				<h2>2. Select the level of error correction and pixel size:</h2>
+				<p class="italic">This is an optional step, the defaults should work for most use cases.</p>
+				<div class="twoColumnGrid">
+					<div>Error correction:</div>
+					<div>Pixel size:</div>
+					<div>
+						<select id="errorCorrection">
+							<option value="1">Level L (7%)</option>
+							<option value="2" selected>Level M (15%)</option>
+							<option value="3">Level Q (25%)</option>
+							<option value="4">Level H (30%)</option>
+						</select>
+					</div>
+					<div>
+						<select id="pixelSize">
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5" selected>5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+							<option value="13">13</option>
+							<option value="14">14</option>
+							<option value="15">15</option>
+							<option value="20">20</option>
+							<option value="25">25</option>
+							<option value="30">30</option>
+							<option value="35">35</option>
+							<option value="40">40</option>
+							<option value="45">45</option>
+							<option value="50">50</option>
+						</select>
+					</div>
+					<div class="italic">This defines how much of the code can be damaged / invisible before it stops working.</div>
+					<div class="italic">This defines how big each square of the code should be. Go bigger for print, smaller for screens.</div>
+				</div>
+			</div>
+			<div>
+				<h2>3. Choose the colors:</h2>
+				<p class="italic">Make sure there is enough contrast, else scanners may not be able to read or detect the code!</p>
+				<div class="twoColumnGrid">
+					<div>Foreground / Code:</div>
+					<div>Background:</div>
+					<div><input type="color" id="foregroundColor" value="#000000" /></div>
+					<div><input type="color" id="backgroundColor" value="#ffffff" /></div>
+				</div>
+			</div>
+			<div>
+				<h2>4. Generate your QR code:</h2>
+				<p><button id="runEncoder">Create and show the QR code image</button></p>
+			</div>
+			<div>
+				<h2>5. Test and save your QR code:</h2>
+				<p><button id="imageSaver" disabled>Save as image file (downloads folder)</button></p>
+				<div class="qrOutput">
+					<canvas id="output" />
+				</div>
+			</div>
+		</div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
