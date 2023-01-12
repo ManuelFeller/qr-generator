@@ -27,87 +27,31 @@
 						</select>
 					</p>
 					<div id="textInputs" style="display: none;">
-						<textarea id="textQrInput" placeholder="Insert your QR content here" rows="5" cols="40"></textarea>
+						{{> text.inputs }}
 					</div>
 					<div id="linkInputs" style="display: none;">
-						<select id="linkQrProtocol">
-							<option value="https" selected>https://</option>
-							<option value="http">http://</option>
-							<option value="custom">custom</option>
-						</select>
-						<input type="text" id="linkQrUrl" placeholder="enter the URL here" />
-						<!-- add some help text in case "custom" is used as URL (e.g. whatsapp:// and so on) -->
+						{{> link.inputs }}
 					</div>
-
 					<div id="emailInputs" style="display: none;">
-						<input type="email" id="emailQrAddress" placeholder="enter the email address here" />
-						<input type="text" id="emailQrSubject" placeholder="enter the email subject here" />
-						<input type="text" id="emailQrBody" placeholder="enter the email body here" />
+						{{> email.inputs }}
 					</div>
-
 					<div id="geoInputs" style="display: none;">
-						<input type="number" id="geoQrLat" placeholder="latitude" min="-90" max="90" />
-						<input type="number" id="geoQrLon" placeholder="longitude" min="-180" max="180" />
+						{{> geo.inputs }}
 					</div>
 					<div id="wifiInputs" style="display: none;">
-						<select id="wifiQrEnrcyption">
-							<option value="none">none</option>
-							<option value="wep">WEP</option>
-							<option value="wpa" selected>WPA/WPA2</option>
-						</select>
-						<input type="text" id="wifiQrSsid" placeholder="enter the SSID here" />
-						<input type="text" id="qifiQrPass" placeholder="enter the Password here" />
+						{{> wifi.inputs }}
 					</div>
 					<div id="smsInputs" style="display: none;">
-						<input type="tel" id="smsQrNumber" placeholder="enter the phone number here" />
-						<input type="text" id="smsQrMessage" placeholder="enter the Message here" />
+						{{> sms.inputs }}
 					</div>
 					<div id="phoneInputs" style="display: none;">
-						<input type="tel" id="phoneQrNumber" placeholder="enter the phone number here" />
+						{{> phone.inputs }}
 					</div>
 					<div id="eventInputs" style="display: none;">
-						event
+						{{> event.inputs }}
 					</div>
 					<div id="contactInputs" style="display: none;">
-						<div class="twoColumnGrid">
-							<div>Title:</div>
-							<div><input id="contactInputTitle" type="text" placeholder="" style="width: 100%;" /></div>
-							<div>First name:</div>
-							<div><input id="contactInputFirstName" type="text" placeholder="" style="width: 100%;" /></div>
-							<div>Middle name(s):</div>
-							<div><input id="contactInputMiddleName" type="text" placeholder="" style="width: 100%;" /></div>
-							<div>Last name:</div>
-							<div><input id="contactInputLastName" type="text" placeholder="" style="width: 100%;" /></div>
-							<div>Name Suffix(es):</div>
-							<div><input id="contactInputNameSuffix" type="text" placeholder="" style="width: 100%;" /></div>
-							<div>Job Title:</div>
-							<div><input id="contactInputJobTitle" type="text" placeholder="" style="width: 100%;" /></div>
-							<div>Company Name:</div>
-							<div><input id="contactInputCompany" type="text" placeholder="" style="width: 100%;" /></div>
-							<div>Contact Type:</div>
-							<div>
-								<select id="contactInputContactType">
-									<option value="home">personal</option>
-									<option value="work" selected>company</option>
-								</select>
-							</div>
-							<div>Street and Number:</div>
-							<div><input id="contactInputStreetAndNumber" type="text" placeholder="" style="width: 100%;" /></div>
-							<div>Zip Code:</div>
-							<div><input id="contactInputZipCode" type="text" placeholder="" style="width: 100%;" /></div>
-							<div>City:</div>
-							<div><input id="contactInputCity" type="text" placeholder="" style="width: 100%;" /></div>
-							<div>Country:</div>
-							<div><input id="contactInputCountry" type="text" placeholder="" style="width: 100%;" /></div>
-							<div>Mobile Phone:</div>
-							<div><input id="contactInputMobile" type="tel" placeholder="" style="width: 100%;" /></div>
-							<div>Landline Phone:</div>
-							<div><input id="contactInputLandline" type="tel" placeholder="" style="width: 100%;" /></div>
-							<div>Email:</div>
-							<div><input id="contactInputEmail" type="email" placeholder="" style="width: 100%;" /></div>
-							<div>URL:</div>
-							<div><input id="contactInputUrl" type="url" placeholder="" style="width: 100%;" /></div>
-						</div>
+            {{> contact.inputs }}
 					</div>
 				</div>
 
