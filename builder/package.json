@@ -11,5 +11,8 @@
   "devDependencies": {
     "vite": "^4.0.0",
     "vite-plugin-singlefile": "^0.13.2"
+  },
+  "dependencies": {
+    "qr-encoder": "^1.1.1"
   }
 }
