@@ -1,8 +1,8 @@
 # qr-generator
 
-A tool to generate simple QR-Codes embedded in a static website
+A tool to generate QR-Codes - all embedded in a static website.
 
-[Based on the qr-encoder library](https://github.com/pinchtools/qr-encoder)
+Started as a small helper for the office and brand managers n my company, "evolved" into a "learn a bit more about vite"...
 
 ## QR Code Standards
 
