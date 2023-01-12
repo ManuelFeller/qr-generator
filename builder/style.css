@@ -5,6 +5,11 @@ body {
 textarea {
 	font-family: monospace;
 }
+
+details summary { 
+  cursor: pointer;
+}
+
 .mainContainer {
 	display: flex;
 	flex-direction: column;
