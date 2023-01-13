@@ -120,8 +120,8 @@ generateButton.addEventListener('click', performEncode);
 const saveButton = document.getElementById('imageSaver');
 saveButton.addEventListener('click', downloadCanvasAsImage);
 
-const typeSelction = document.getElementById('typeOfCode');
-typeSelction.addEventListener('change', updateSelectedQrType);
+const typeSelection = document.getElementById('typeOfCode');
+typeSelection.addEventListener('change', updateSelectedQrType);
 
-activateInputDiv(typeSelction.value);
+activateInputDiv(typeSelection.value);
 
