@@ -1,7 +1,22 @@
-<select id="wifiQrEnrcyption">
-	<option value="none">none</option>
-	<option value="wep">WEP</option>
-	<option value="wpa" selected>WPA/WPA2</option>
-</select>
-<input type="text" id="wifiQrSsid" placeholder="enter the SSID here" />
-<input type="text" id="qifiQrPass" placeholder="enter the Password here" />
+<div class="twoColumnGrid">
+	<label for="wifiQrEnrcyption">Encryption:</label>
+	<div>
+		<select id="wifiQrEncryption">
+			<option value="none">none</option>
+			<option value="wep">WEP</option>
+			<option value="wpa" selected>WPA / WPA2</option>
+		</select>
+	</div>
+	<label for="wifiQrSsid">SSID:</label>
+	<div>
+		<input type="text" id="wifiQrSsid" placeholder="enter the SSID here" style="width: 100%;" />
+	</div>
+	<label for="wifiQrPass">Password:</label>
+	<div>
+		<input type="text" id="wifiQrPass" placeholder="enter the Password here"  style="width: 100%;" style="width: 100%;" />
+	</div>
+	<label for="wifiQrHidden">SSID is hidden:</label>
+	<div>
+		<input type="checkbox" id="wifiQrHidden" />
+	</div>
+</div>

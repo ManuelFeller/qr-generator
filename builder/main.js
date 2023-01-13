@@ -5,13 +5,14 @@ import generateTextFromInputs from './generators/text';
 import generateLinkFromInputs from './generators/link';
 import generateEmailFromInputs from './generators/email';
 import generateCoordinatesFromInputs from './generators/geo';
+import generateWifiFromInputs from './generators/wifi';
 
 const qrTypes = [
 	{id: "text", contentGenerator: generateTextFromInputs },
 	{id: "link", contentGenerator: generateLinkFromInputs },
 	{id: "email", contentGenerator: generateEmailFromInputs },
 	{id: "geo", contentGenerator: generateCoordinatesFromInputs },
-	{id: "wifi"},
+	{id: "wifi", contentGenerator: generateWifiFromInputs },
 	{id: "sms"},
 	{id: "phone"},
 	{id: "event"},
