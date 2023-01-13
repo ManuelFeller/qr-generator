@@ -20,6 +20,9 @@ WPA/WPA2: `WIFI:S:ssid;T:WEP;P:password;;`
 WEP: `WIFI:S:ssid;T:WPA;P:password;;`  
 No Encrption: `WIFI:S:ssid;T:nopass;P:password;;`
 
+The unused H and operand there appears to deal with hidden networks
+`WIFI:S:<SSID>;T:<WEP|WPA|blank>;P:<PASSWORD>;H:<true|false|blank>;;`
+
 ### GEO URL
 
 `geo:--lat--,--lon--`
