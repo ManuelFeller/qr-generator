@@ -4,6 +4,24 @@ A tool to generate QR-Codes - all embedded in a static website.
 
 Started as a small helper for the office and brand managers n my company, "evolved" into a "learn a bit more about vite"...
 
+## How to use
+
+- go to Releases
+- download the latest release
+- unpack the -zip file
+- move the .html file to the location where you want to keep it
+- (double) click the file to open it with your browser
+- use it according to the displayed instructions
+
+## How to build
+
+- make sure you have an up to date (LTS) version of nodeJS
+- clone the repository
+- enter the `./builder/` directory in your terminal / command prompt
+- run `npm install`
+- run `npm run build`
+- the generated file is `./builder/dist/index.html` - it contains everything you need to use the tool
+
 ## QR Code Standards
 
 ### Phone Number
