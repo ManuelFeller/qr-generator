@@ -3,11 +3,12 @@ import QrEncoder from "qr-encoder";
 import generateContactFromInputs from './generators/contact';
 import generateTextFromInputs from './generators/text';
 import generateLinkFromInputs from './generators/link';
+import generateEmailFromInputs from './generators/email';
 
 const qrTypes = [
 	{id: "text", contentGenerator: generateTextFromInputs },
 	{id: "link", contentGenerator: generateLinkFromInputs },
-	{id: "email"},
+	{id: "email", contentGenerator: generateEmailFromInputs },
 	{id: "geo"},
 	{id: "wifi"},
 	{id: "sms"},
