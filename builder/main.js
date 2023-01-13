@@ -6,6 +6,7 @@ import generateLinkFromInputs from './generators/link';
 import generateEmailFromInputs from './generators/email';
 import generateCoordinatesFromInputs from './generators/geo';
 import generateWifiFromInputs from './generators/wifi';
+import generateSmsFromInputs from './generators/sms';
 
 const qrTypes = [
 	{id: "text", contentGenerator: generateTextFromInputs },
@@ -13,7 +14,7 @@ const qrTypes = [
 	{id: "email", contentGenerator: generateEmailFromInputs },
 	{id: "geo", contentGenerator: generateCoordinatesFromInputs },
 	{id: "wifi", contentGenerator: generateWifiFromInputs },
-	{id: "sms"},
+	{id: "sms", contentGenerator: generateSmsFromInputs },
 	{id: "phone"},
 	{id: "event"},
 	{id: "contact", contentGenerator: generateContactFromInputs},
