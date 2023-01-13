@@ -4,12 +4,13 @@ import generateContactFromInputs from './generators/contact';
 import generateTextFromInputs from './generators/text';
 import generateLinkFromInputs from './generators/link';
 import generateEmailFromInputs from './generators/email';
+import generateCoordinatesFromInputs from './generators/geo';
 
 const qrTypes = [
 	{id: "text", contentGenerator: generateTextFromInputs },
 	{id: "link", contentGenerator: generateLinkFromInputs },
 	{id: "email", contentGenerator: generateEmailFromInputs },
-	{id: "geo"},
+	{id: "geo", contentGenerator: generateCoordinatesFromInputs },
 	{id: "wifi"},
 	{id: "sms"},
 	{id: "phone"},

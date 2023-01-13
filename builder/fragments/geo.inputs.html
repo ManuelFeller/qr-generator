@@ -1,2 +1,16 @@
-<input type="number" id="geoQrLat" placeholder="latitude" min="-90" max="90" />
-<input type="number" id="geoQrLon" placeholder="longitude" min="-180" max="180" />
+Latitude: <input type="number" id="geoQrLat" placeholder="e.g. 49.9764195" min="-90" max="90" style="width: 15rem;" /><br />
+Longitude: <input type="number" id="geoQrLon" placeholder="e.g. 8.0560682" min="-180" max="180" style="width: 15rem;" />
+
+<p class="italic">
+	You can easily extract the values from your map service of choice.<br />
+	Just center the map at the desired location and copy them from the URL.<br />
+	OpenStreetMap and Google Maps both use Latitude first, followed by Longitude.
+</p>
+<p class="italic">
+	In the following two examples the Latitude is <code><strong>49.9764195</strong></code> and the Longitude is <code><strong>8.0560682</strong></code>:<br />
+	<code>https://www.openstreetmap.org/#map=14/<strong>49.9764195</strong>/<strong>8.0560682</strong></code><br />
+	<code>https://www.google.com/maps/@<strong>49.9764195</strong>,<strong>8.0560682</strong>,14z</code>
+</p>
+<p class="italic">
+	Note: if you enter a comma instead of a dot it will be automatically converted, so no worries ;)
+</p>
