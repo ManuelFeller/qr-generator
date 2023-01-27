@@ -1,8 +1,26 @@
 # qr-generator
 
-A tool to generate simple QR-Codes embedded in a static website
+A tool to generate QR-Codes - all embedded in a static website.
 
-[Based on the qr-encoder library](https://github.com/pinchtools/qr-encoder)
+Started as a small helper for the office and brand managers n my company, "evolved" into a "learn a bit more about vite"...
+
+## How to use
+
+- go to Releases
+- download the latest release
+- unpack the -zip file
+- move the .html file to the location where you want to keep it
+- (double) click the file to open it with your browser
+- use it according to the displayed instructions
+
+## How to build
+
+- make sure you have an up to date (LTS) version of nodeJS
+- clone the repository
+- enter the `./builder/` directory in your terminal / command prompt
+- run `npm install`
+- run `npm run build`
+- the generated file is `./builder/dist/index.html` - it contains everything you need to use the tool
 
 ## QR Code Standards
 
@@ -20,6 +38,9 @@ WPA/WPA2: `WIFI:S:ssid;T:WEP;P:password;;`
 WEP: `WIFI:S:ssid;T:WPA;P:password;;`  
 No Encrption: `WIFI:S:ssid;T:nopass;P:password;;`
 
+The H operand there appears to deal with hidden networks
+`WIFI:S:<SSID>;T:<WEP|WPA|blank>;P:<PASSWORD>;H:<true|false|blank>;;`
+
 ### GEO URL
 
 `geo:--lat--,--lon--`
@@ -32,6 +53,7 @@ No Encrption: `WIFI:S:ssid;T:nopass;P:password;;`
 
 ```
 BEGIN:VCARD
+VERSION:3.0
 N:YOUR_NAME
 TEL:+1234567890
 EMAIL:your@email.net
@@ -39,11 +61,12 @@ URL:https://YOURWEBSIE.net
 ADR:YOUR_ADDRESS_HERE YOUR_ADDRESS_2_HERE
 ORG:YOUR_COMPANY
 NOTE:YOURMEMO
-VERSION:3.0
 END:VCARD
 ```
 
 ### Event
+
+https://icalendar.org/iCalendar-RFC-5545/3-6-1-event-component.html
 
 ```
 BEGIN:VEVENT
@@ -53,4 +76,16 @@ DTEND:20230131
 LOCATION:EVENT_LOCATION
 DESCRIPTION:EVENT_DESCRIPTION
 END:VEVENT
+```
+
+```
+BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+DTSTART:20110510T200000+0100
+DTEND:20110510T235959+0100
+LOCATION:Nirvana Club
+SUMMARY:Jahresversammlung 2011 der gescheiterten Existenzen
+END:VEVENT
+END:VCALENDAR
 ```

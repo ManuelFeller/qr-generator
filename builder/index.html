@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>QR code generator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+		<div class="mainContainer">
+			<div>
+				<h1>QR code generator</h1>
+			</div>
+			<div>
+				<h2>1. Enter your content</h2>
+
+				<div>
+					<p>Select content type: 
+						<select id="typeOfCode">
+							<option value="text">Text</option>
+							<option value="link" selected>Link</option>
+							<option value="contact">Contact</option>
+							<option value="event">Event</option>
+							<option value="wifi">WiFi</option>
+							<option value="geo">Location</option>
+							<option value="email">send Email</option>
+							<option value="phone">Phone call</option>
+							<option value="sms">send SMS</option>
+						</select>
+					</p>
+					<div id="textInputs" style="display: none;">
+						{{> text.inputs }}
+					</div>
+					<div id="linkInputs" style="display: none;">
+						{{> link.inputs }}
+					</div>
+					<div id="emailInputs" style="display: none;">
+						{{> email.inputs }}
+					</div>
+					<div id="geoInputs" style="display: none;">
+						{{> geo.inputs }}
+					</div>
+					<div id="wifiInputs" style="display: none;">
+						{{> wifi.inputs }}
+					</div>
+					<div id="smsInputs" style="display: none;">
+						{{> sms.inputs }}
+					</div>
+					<div id="phoneInputs" style="display: none;">
+						{{> phone.inputs }}
+					</div>
+					<div id="eventInputs" style="display: none;">
+						{{> event.inputs }}
+					</div>
+					<div id="contactInputs" style="display: none;">
+            {{> contact.inputs }}
+					</div>
+				</div>
+			</div>
+			<div>
+        {{> qr.quality.settings }}
+			</div>
+			<div>
+				{{> qr.color.settings }}
+			</div>
+			<div>
+				<h2>4. Generate your QR code</h2>
+				<p><button id="runEncoder">Create and show the QR code image</button></p>
+			</div>
+			<div>
+				<h2>5. Test and save your QR code</h2>
+				<p><button id="imageSaver" disabled>Save as image file (downloads folder)</button></p>
+				<div class="qrOutput">
+					<canvas id="output" />
+				</div>
+			</div>
+		</div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
