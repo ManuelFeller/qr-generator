@@ -1,5 +1,5 @@
 import './style.css';
-import QrEncoder from "qr-encoder";
+import QrEncoder from 'qr-encoder';
 import generateContactFromInputs from './generators/contact';
 import generateTextFromInputs from './generators/text';
 import generateLinkFromInputs from './generators/link';
@@ -8,17 +8,18 @@ import generateCoordinatesFromInputs from './generators/geo';
 import generateWifiFromInputs from './generators/wifi';
 import generateSmsFromInputs from './generators/sms';
 import generatePhoneFromInputs from './generators/phone';
+import generateEventFromInputs from './generators/event';
 
 const qrTypes = [
-	{id: "text", contentGenerator: generateTextFromInputs },
-	{id: "link", contentGenerator: generateLinkFromInputs },
-	{id: "email", contentGenerator: generateEmailFromInputs },
-	{id: "geo", contentGenerator: generateCoordinatesFromInputs },
-	{id: "wifi", contentGenerator: generateWifiFromInputs },
-	{id: "sms", contentGenerator: generateSmsFromInputs },
-	{id: "phone", contentGenerator: generatePhoneFromInputs},
-	{id: "event"},
-	{id: "contact", contentGenerator: generateContactFromInputs},
+	{ id: "text", contentGenerator: generateTextFromInputs },
+	{ id: "link", contentGenerator: generateLinkFromInputs },
+	{ id: "email", contentGenerator: generateEmailFromInputs },
+	{ id: "geo", contentGenerator: generateCoordinatesFromInputs },
+	{ id: "wifi", contentGenerator: generateWifiFromInputs },
+	{ id: "sms", contentGenerator: generateSmsFromInputs },
+	{ id: "phone", contentGenerator: generatePhoneFromInputs },
+	{ id: "event", contentGenerator: generateEventFromInputs },
+	{ id: "contact", contentGenerator: generateContactFromInputs },
 ];
 // will be set on init
 let selectedQrMode = undefined;
@@ -29,11 +30,6 @@ const performEncode = () => {
 	const canvas = document.getElementById("output");
 	const canvasContext = canvas.getContext("2d");
 	canvasContext.clearRect(0, 0, canvasContext.canvas.width, canvasContext.canvas.height);
-	// const inputArea = document.getElementById("input");
-	// if (inputArea.value.trim() === '') {
-	// 	alert("No content was provided for the QR code.\nGeneration not possible...");
-	// 	return;
-	// }
 
 	let qrContent = null;
 	if (selectedQrMode.contentGenerator === undefined) {
