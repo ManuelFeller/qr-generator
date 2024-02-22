@@ -53,8 +53,8 @@ const generateEventFromInputs = () => {
 		const endDate = new Date(inputEndDate.value + ' ' + inputEndTime.value);	
 		startString = `DTSTART:${startDate.getUTCFullYear()}${addLeadingZeroIfNeeded(startDate.getUTCMonth() + 1)}${addLeadingZeroIfNeeded(startDate.getUTCDate())}`;
 		endString = `DTEND:${endDate.getUTCFullYear()}${addLeadingZeroIfNeeded(endDate.getUTCMonth() + 1)}${addLeadingZeroIfNeeded(endDate.getUTCDate())}`;
-		startString += `T${startDate.getUTCHours()}${startDate.getUTCMinutes()}00Z\n`;
-		endString += `T${endDate.getUTCHours()}${endDate.getUTCMinutes()}00Z\n`;
+		startString += `T${addLeadingZeroIfNeeded(startDate.getUTCHours())}${addLeadingZeroIfNeeded(startDate.getUTCMinutes())}00Z\n`;
+		endString += `T${addLeadingZeroIfNeeded(endDate.getUTCHours())}${addLeadingZeroIfNeeded(endDate.getUTCMinutes())}00Z\n`;
 		// reminders make things more complicated, so for now this will not be activated (some Androids Apps are super picky on that)
 		// generate default reminder, 15 minutes before event
 		// reminder = `BEGIN:VALARM\nTRIGGER:-PT15M\nACTION:DISPLAY\nDESCRIPTION:Reminder\nEND:VALARM\n`;
