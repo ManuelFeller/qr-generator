@@ -49,8 +49,8 @@ const generateEventFromInputs = () => {
 	let startString = '';
 	let endString = '';
 	if (!inputIsWholeDay.checked) {
-		const startDate = new Date(inputStartDate.value + ' ' + inputStartTime.value);
-		const endDate = new Date(inputEndDate.value + ' ' + inputEndTime.value);	
+		const startDate = new Date(inputStartDate.value + ' ' + inputStartTime.value + '+00:00');
+		const endDate = new Date(inputEndDate.value + ' ' + inputEndTime.value + '+00:00');	
 		startString = `DTSTART:${startDate.getUTCFullYear()}${addLeadingZeroIfNeeded(startDate.getUTCMonth() + 1)}${addLeadingZeroIfNeeded(startDate.getUTCDate())}`;
 		endString = `DTEND:${endDate.getUTCFullYear()}${addLeadingZeroIfNeeded(endDate.getUTCMonth() + 1)}${addLeadingZeroIfNeeded(endDate.getUTCDate())}`;
 		startString += `T${addLeadingZeroIfNeeded(startDate.getUTCHours())}${addLeadingZeroIfNeeded(startDate.getUTCMinutes())}00Z\n`;
