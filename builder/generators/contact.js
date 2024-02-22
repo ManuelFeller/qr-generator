@@ -92,7 +92,7 @@ const generateContactFromInputs = () => {
  * @param {string} honorificSuffix Suffixes like M.. or Jr. - if multiple ones they need to be separated by spaces
  * @returns The strings to add to the vCard output
  */
-const vCardGenerateNameFields = (honorificPrefix, firstName, middleName, lastName, honorificSuffix) => {
+export const vCardGenerateNameFields = (honorificPrefix, firstName, middleName, lastName, honorificSuffix) => {
 	// Name part (FN & N)
 	// example form Spec: N:Stevenson;John;Philip,Paul;Dr.;Jr.,M.D.,A.C.P.
 	// LastName;Firstname;MiddleName;Prefixes;Suffixes
@@ -137,7 +137,7 @@ const vCardGenerateNameFields = (honorificPrefix, firstName, middleName, lastNam
  * @param {string} country The country name
  * @returns The string to add to the vCard output
  */
-const vCardGenerateAddress = (type, poBox, extendedAddress, streetAddress, locality, region, postalCode, country) => {
+export const vCardGenerateAddress = (type, poBox, extendedAddress, streetAddress, locality, region, postalCode, country) => {
 	// ADR;TYPE=home:;;123 Main St.;Springfield;IL;12345;USA
 	// the post office box;
 	// the extended address (e.g., apartment or suite number);
@@ -167,7 +167,7 @@ const vCardGenerateAddress = (type, poBox, extendedAddress, streetAddress, local
  * @param {string} title The job title for the vCard
  * @returns The string to add to the vCard output
  */
-const vCardGenerateOrgInfo = (org, title) => {
+export const vCardGenerateOrgInfo = (org, title) => {
 	if (org !== '' || title !== '') {
 		let orgContent = '';
 		if (org !== '') {
@@ -190,11 +190,11 @@ const vCardGenerateOrgInfo = (org, title) => {
  * @param {string} phoneNumber The phone number
  * @returns The string to add to the vCard output
  */
-const vCardGeneratePhoneField = (type, phoneNumber) => {
+export const vCardGeneratePhoneField = (type, phoneNumber) => {
 	// TEL;TYPE=cell:(123) 555-5832
 	// TYPE="text,voice"
 	if (phoneNumber !== '') {
-		return `TEL;TYPE="${type}":${phoneNumber}\n`;
+		return `TEL;TYPE=${type}:${phoneNumber}\n`;
 	} else {
 		return '';
 	}
@@ -206,7 +206,7 @@ const vCardGeneratePhoneField = (type, phoneNumber) => {
  * @param {string} email The email address
  * @returns The string to add to the vCard output
  */
-const vCardGenerateEmailField = (type, email) => {
+export const vCardGenerateEmailField = (type, email) => {
 	if (email !== '') {
 		return `EMAIL;TYPE=${type}:${email}\n`;
 	} else {
@@ -220,7 +220,7 @@ const vCardGenerateEmailField = (type, email) => {
  * @param {string} url The url
  * @returns The string to add to the vCard output
  */
-const vCardGenerateUrlField = (type, url) => {
+export const vCardGenerateUrlField = (type, url) => {
 	if (url !== '') {
 		return `URL;TYPE=${type}:${url}\n`;
 	} else {
