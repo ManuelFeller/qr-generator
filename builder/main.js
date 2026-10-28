@@ -9,6 +9,7 @@ import generateWifiFromInputs from './generators/wifi';
 import generateSmsFromInputs from './generators/sms';
 import generatePhoneFromInputs from './generators/phone';
 import generateEventFromInputs from './generators/event';
+import generateTotpFromInputs from './generators/totp';
 
 const qrTypes = [
 	{ id: "text", contentGenerator: generateTextFromInputs },
@@ -20,6 +21,7 @@ const qrTypes = [
 	{ id: "phone", contentGenerator: generatePhoneFromInputs },
 	{ id: "event", contentGenerator: generateEventFromInputs },
 	{ id: "contact", contentGenerator: generateContactFromInputs },
+	{ id: "totp", contentGenerator: generateTotpFromInputs },
 ];
 // will be set on init
 let selectedQrMode = undefined;
@@ -126,4 +128,3 @@ const typeSelection = document.getElementById('typeOfCode');
 typeSelection.addEventListener('change', updateSelectedQrType);
 
 activateInputDiv(typeSelection.value);
-
